@@ -215,7 +215,9 @@
 
                 form_data.append("codeid", $("#codeid").val());
 
-                // console.log(form_data);
+                form_data.forEach((value, key) => {
+                    console.log(key + ": " + value);
+                });
                 // return;
 
                 $("#addBtn").prop('disabled', true).html('Uploading...');
