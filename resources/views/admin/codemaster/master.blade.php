@@ -40,7 +40,7 @@
                                     {!! Form::hidden('codeid','', ['id' => 'codeid']) !!}
                                     @csrf
 
-                                    {{-- <div>
+                                    <div>
                                         <label for="softcode" class="awesome">Pages</label>
                                         <select name="softcode" class="form-control" id="softcode" required>
                                             <option value=""  >Select Account Type</option>
@@ -48,7 +48,7 @@
                                             <option value="{{$item->name}}">{{$item->name}}</option>
                                             @endforeach
                                         </select>
-                                    </div> --}}
+                                    </div>
 
 
                                     <div>
@@ -77,7 +77,7 @@
 
         </div>
 
-        {{-- <button id="newBtn" type="button" class="btn btn-info">Add New</button> --}}
+        <button id="newBtn" type="button" class="btn btn-info">Add New</button>
         <hr>
 
         <div id="contentContainer">
@@ -130,7 +130,6 @@
 
 @endsection
 @section('script')
-    <script src="//cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 
     <script>
         $(document).ready(function () {

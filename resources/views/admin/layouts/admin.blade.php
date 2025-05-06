@@ -94,7 +94,13 @@
         <!--@endif-->
 
         @if(Auth::user()->is_type == 'admin' || in_array('3', json_decode(Auth::user()->staff->role->permissions)))
-        <li><a class="app-menu__item" href="{{url('admin/company-detail')}}" id="company-detail"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Company Details</span></a></li>
+        <li>
+          <a class="app-menu__item {{ request()->is('admin/company-detail') ? 'active' : '' }}" 
+             href="{{ url('admin/company-detail') }}" id="company-detail">
+            <i class="app-menu__icon fa fa-pie-chart"></i>
+            <span class="app-menu__label">Company Details</span>
+          </a>
+        </li>
         @endif
 
         @if(Auth::user()->is_type == 'admin' || in_array('3', json_decode(Auth::user()->staff->role->permissions)))

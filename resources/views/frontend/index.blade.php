@@ -202,15 +202,10 @@
       </div>
       <div class="col-md-6">
         <div class="home-about p-4">
-          <h2 class="sectitle text-uppercase sinking-bold fw-bold mb-3">About Homespecsolution</h2>
+          <h2 class="sectitle text-uppercase sinking-bold fw-bold mb-3">
+            {{\App\Models\Master::where('softcode','=','homeAbout')->first()->hardcode ?? ''}}</h2>
           <p style="text-align: justify;">
-            From renovations to repairs, we will improve your home and enable environments that inspire and ensure with expert craftsmanship.
-          </p>
-          <p style="text-align: justify;">
-            When building new structures, restoring historic buildings, or repairing damaged materials, we're here to help.
-          </p>
-          <p style="text-align: justify;">
-            We offer a full range of services to help you achieve your vision. We're experts in residential, commercial, and industrial renovations and repairs.
+            {!! \App\Models\Master::where('softcode','=','homeAbout')->first()->details ?? ''!!}
           </p>
         </div>
       </div>

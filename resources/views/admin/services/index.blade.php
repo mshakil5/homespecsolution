@@ -228,9 +228,10 @@
                     processData: false,
                     data: form_data,
                     success: function(d) {
+                      console.log(d);
                         $("#addBtn").prop('disabled', false).html('Update');
                         showSuccess('Service updated successfully.');
-                        reloadPage(2000);
+                        // reloadPage(2000);
                     },
                     error: function(xhr, status, error) {
                         $("#addBtn").prop('disabled', false).html('Update');
