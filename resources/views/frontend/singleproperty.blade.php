@@ -64,7 +64,7 @@
 
 
 
-              <h3 class="mt-5 text-theme text-capitalize">About this property</h3> <hr> <br>
+              <h3 class="mt-5 text-theme text-capitalize">About this project</h3> <hr> <br>
                <div class="row">
                    <div class="col-md-12">
                       <p class="text-muted">

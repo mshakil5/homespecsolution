@@ -209,40 +209,38 @@ class PropertyController extends Controller
 
     public function imageStore(Request $request)
     {
-
-        if(!$request->hasFile('media')){
-            $message ="<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Please select  image or video.</b></div>";
-            return response()->json(['status'=> 303,'message'=>$message]);
+        if (!$request->hasFile('media')) {
+            $message = "<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Please select image or video.</b></div>";
+            return response()->json(['status' => 303, 'message' => $message]);
         }
-
-            try{
-                //image upload start
-                if ($request->hasfile('media')) {
-                    // $media= [];
-                    foreach ($request->file('media') as $image) {
-                        $rand = mt_rand(100000, 999999);
-                        $name = time() . "_" . Auth::id() . "_" . $rand . "." . $image->getClientOriginalExtension();
-                        //move image to postimages folder
-                        $image->move(public_path() . '/images/property/', $name);
-                        $data[] = $name;
-                        //insert into picture table
-
-                        $pic = new PropertyImage();
-                        $pic->image = $name;
-                        $pic->property_id = $request->property_id;
-                        $pic->created_by= Auth::user()->id;
-                       $pic->save();
-                    }
+    
+        try {
+            foreach ($request->file('media') as $media) {
+                $rand = mt_rand(100000, 999999);
+                $name = time() . "_" . Auth::id() . "_" . $rand . "." . $media->getClientOriginalExtension();
+                $mediaPath = public_path('images/property/' . $name);
+    
+                if (in_array(strtolower($media->getClientOriginalExtension()), ['jpg', 'jpeg', 'png', 'gif'])) {
+                    Image::make($media)
+                        ->fit(835, 467)
+                        ->save($mediaPath);
+                } else {
+                    $media->move(public_path('images/property'), $name);
                 }
-
-                $message ="<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Data Created Successfully.</b></div>";
-                return response()->json(['status'=> 300,'message'=>$message]);
-
-            }catch (\Exception $e){
-                return response()->json(['status'=> 303,'message'=>$request->property]);
-
+    
+                $pic = new PropertyImage();
+                $pic->image = $name;
+                $pic->property_id = $request->property_id;
+                $pic->created_by = Auth::id();
+                $pic->save();
             }
-
+    
+            $message = "<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Data Created Successfully.</b></div>";
+            return response()->json(['status' => 300, 'message' => $message]);
+    
+        } catch (\Exception $e) {
+            return response()->json(['status' => 303, 'message' => 'Something went wrong.']);
+        }
     }
 
     public function imageDelete($id)

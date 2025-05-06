@@ -218,79 +218,9 @@
   </div>
 </section>
 
-@if(\App\Models\Property::count() > 0)
-<section class="border-top  pt-3 projects">
-    <div class="container px-4 mt-2">  
+@include('frontend.inc.projects')
 
-      <div class="row mb-2">
-          <div class="col-12 text-center">
-              <h1 class="sectitle pb-2 text-uppercase sinking-bold fw-bold">Our Latest Projects</h1>
-          </div>
-      </div>
-
-        <div class="row g-4 py-3 row-cols-1 row-cols-lg-3">
-            @foreach (\App\Models\Property::limit(9)->orderBy('id','DESC')->get() as $data)
-                <div class="feature col">
-                    <div class="project-box shadow-sm">
-                        <a href="{{ route('property-details', $data->id)}}" style="text-decoration:none;">
-                            <div class="photo">
-                                <img src="{{ asset('images/property/'.$data->image) }}" class="img-fluid" style="height: 250px; object-fit: cover;">
-                                <div class="bottomInfo">
-                                    <div><span class="iconify" data-icon="clarity:map-marker-solid"></span> {{ $data->location}}</div>
-                                    <div><span class="iconify" data-icon="ant-design:camera-filled"></span> {{ $data->view}}</div>
-                                </div>
-                            </div>
-                            <h4 class="title mb-0 py-4">{{ $data->title}}</h4>
-                        </a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif
-
-@if(\App\Models\Service::where('status', 1)->count() > 0)
-
-<section class="border-top pt-3 projects" style="background-color:rgba(224, 253, 255, 0.2);">
-  <div class="container px-4 mt-2">
-      <div class="row mb-2">
-          <div class="col-12 text-center">
-              <h1 class="sectitle pb-2 text-uppercase sinking-bold fw-bold">We Offer Services</h1>
-          </div>
-      </div>
-      
-      <div class="row g-4 py-3 row-cols-1 row-cols-lg-3">
-        @foreach (\App\Models\Service::where('status', 1)->latest()->limit(9)->get() as $data)
-          <div class="feature col">
-            <div class="project-box shadow-sm">
-              <a href="javascript:void(0);" 
-                 class="project-link"
-                 data-title="{{ $data->title }}"
-                 data-description="{{ Str::limit(strip_tags($data->description), 100) }}"
-                 data-image="{{ asset($data->image) }}"
-                 style="text-decoration: none;">
-                 
-                <div class="photo" style="height: 200px; overflow: hidden;">
-                  <img src="{{ asset($data->image) }}" 
-                       class="img-fluid w-100 h-100" 
-                       style="object-fit: cover;">
-                  <div class="bottomInfo">
-                    <div><span class="iconify" data-icon="clarity:map-marker-solid"></span></div>
-                    <div><span class="iconify" data-icon="ant-design:camera-filled"></span></div>
-                  </div>
-                </div>
-                
-                <h4 class="title mb-0 py-4">{{ $data->title }}</h4>
-              </a>
-            </div>
-          </div>
-        @endforeach
-      </div>
-  </div>
-</section>
-
-@endif
+@include('frontend.inc.services')
 
 <section class="border-top pt-3 projects">
   <div class="container px-4 mt-3">
@@ -383,15 +313,12 @@
     <div class="row gy-4 align-items-stretch">
       <div class="col-lg-5">
         <div class="card h-100 shadow-lg border-0 rounded-4 overflow-hidden">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8154.13953526859!2d10.741409075204038!3d59.90616497005243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e61aa7629a9%3A0x537e4684a2b0b54d!2sAkershusstranda%2020%2C%200150%20Oslo%2C%20Norway!5e0!3m2!1sen!2sbd!4v1688389263854!5m2!1sen!2sbd" 
-            width="100%" 
+          <iframe src="{{\App\Models\CompanyDetail::first()->google_appstore_link}}" width="100%" 
             height="100%" 
             style="border:0; min-height: 320px;" 
             allowfullscreen="" 
             loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>        
       </div>
 
@@ -431,20 +358,6 @@
   </div>
 </section>
 
-<div class="modal fade" id="serviceModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content border-0">
-      <div class="modal-header border-0">
-        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4">
-        <img id="modalImage" class="img-fluid rounded mb-3" style="width: 100%; height: 200px; object-fit: cover;">
-        <h4 id="modalTitle" class="mb-2" style="color: #15363b; font-weight: bold;"></h4>
-        <p id="modalDesc" class="text-muted mb-0"></p>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -564,21 +477,6 @@
       }
   })();
 
-</script>
-
-<script>
-  $(document).on('click', '.project-link', function(e) {
-      e.preventDefault();
-      const title = $(this).data('title');
-      const desc = $(this).data('description');
-      const image = $(this).data('image');
-
-      $('#modalTitle').text(title);
-      $('#modalDesc').text(desc);
-      $('#modalImage').attr('src', image);
-
-      $('#serviceModal').modal('show');
-  });
 </script>
 
 <script>

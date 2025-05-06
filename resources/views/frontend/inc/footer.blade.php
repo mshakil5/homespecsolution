@@ -18,7 +18,9 @@
                             </div>
                             <div class="customer-support-text">
                                 <span>Customer Support</span>
-                                <a class="customer-support-text-phone" href="tel:07715584838">07715584838</a>
+                                <a class="customer-support-text-phone" href="tel:{{ App\Models\CompanyDetail::select('phone1')->first()->phone1 }}">
+                                    {{ App\Models\CompanyDetail::select('phone1')->first()->phone1 }}
+                                </a>                   
                             </div>
                         </div>
                     </div>

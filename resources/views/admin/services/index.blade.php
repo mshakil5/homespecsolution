@@ -215,6 +215,9 @@
 
                 form_data.append("codeid", $("#codeid").val());
 
+                // console.log(form_data);
+                // return;
+
                 $("#addBtn").prop('disabled', true).html('Uploading...');
 
                 $.ajax({

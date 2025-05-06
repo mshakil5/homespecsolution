@@ -22,11 +22,20 @@
                     <a href="{{ route('homepage')}}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item m-1">
-                    <a href="{{ route('residential')}}" class="nav-link">Residential</a>
+                    <a href="{{ route('about')}}" class="nav-link">About Us</a>
                 </li>
                 <li class="nav-item m-1">
-                    <a href="{{ route('commercial')}}" class="nav-link">Commercial</a>
+                    <a href="{{ route('projects')}}" class="nav-link">Projects</a>
                 </li>
+                <li class="nav-item m-1">
+                    <a href="{{ route('services')}}" class="nav-link">Services</a>
+                </li>
+                {{-- <li class="nav-item m-1">
+                    <a href="{{ route('residential')}}" class="nav-link">Residential</a>
+                </li> --}}
+                {{-- <li class="nav-item m-1">
+                    <a href="{{ route('commercial')}}" class="nav-link">Commercial</a>
+                </li> --}}
 
                 <li class="nav-item m-1 ">
                     <a href="{{ route('contact')}}" class="nav-link">Contact us</a>

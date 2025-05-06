@@ -68,6 +68,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', [FrontendController::class, 'index'])->name('homepage');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
+Route::get('/projects', [FrontendController::class, 'projects'])->name('projects');
+Route::get('/services', [FrontendController::class, 'services'])->name('services');
 Route::get('/terms', [FrontendController::class, 'terms'])->name('terms');
 Route::get('/privacy', [FrontendController::class, 'privacy'])->name('privacy');
 Route::get('/residential', [PropertyController::class, 'residential'])->name('residential');

@@ -44,6 +44,16 @@ class FrontendController extends Controller
         return view('frontend.about');
     }
 
+    public function projects()
+    {
+        return view('frontend.projects');
+    }
+
+    public function services()
+    {
+        return view('frontend.services');
+    }
+
     public function privacy()
     {
         return view('frontend.privacy');
