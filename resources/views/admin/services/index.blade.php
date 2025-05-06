@@ -215,9 +215,9 @@
 
                 form_data.append("codeid", $("#codeid").val());
 
-                form_data.forEach((value, key) => {
-                    console.log(key + ": " + value);
-                });
+                // form_data.forEach((value, key) => {
+                //     console.log(key + ": " + value);
+                // });
                 // return;
 
                 $("#addBtn").prop('disabled', true).html('Uploading...');
@@ -230,10 +230,10 @@
                     processData: false,
                     data: form_data,
                     success: function(d) {
-                      console.log(d);
+                      // console.log(d);
                         $("#addBtn").prop('disabled', false).html('Update');
                         showSuccess('Service updated successfully.');
-                        // reloadPage(2000);
+                        reloadPage(2000);
                     },
                     error: function(xhr, status, error) {
                         $("#addBtn").prop('disabled', false).html('Update');

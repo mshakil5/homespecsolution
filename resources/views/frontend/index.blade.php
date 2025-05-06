@@ -355,16 +355,16 @@
 
 
 <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content border-0">
-      <div class="modal-header border-0">
-        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-header p-2 border-0">
+        <h5 id="modalTitle" class="modal-title fw-bold text-dark m-0"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body p-4">
-        <video id="videoBlogPlayer" class="img-fluid rounded mb-3"
+      <div class="modal-body px-3 pb-3 pt-2">
+        <video id="videoBlogPlayer" class="img-fluid rounded mb-2"
                style="width: 100%; height: 300px; object-fit: cover;" controls></video>
-        <h4 id="modalTitle" class="mb-2" style="color: #15363b; font-weight: bold;"></h4>
-        <p id="modalDesc" class="text-muted mb-0"></p>
+        <div id="modalDesc" class="text-muted" style="max-height: 350px; overflow-y: auto; font-size: 14px;"></div>
       </div>
     </div>
   </div>

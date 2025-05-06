@@ -15,7 +15,7 @@
               <a href="javascript:void(0);" 
                  class="project-link"
                  data-title="{{ $data->title }}"
-                 data-description="{{ Str::limit(strip_tags($data->description), 100) }}"
+                 data-description="{{ $data->description }}"
                  data-image="{{ asset($data->image) }}"
                  style="text-decoration: none;">
                  
@@ -39,15 +39,15 @@
 </section>
 
 <div class="modal fade" id="serviceModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content border-0">
       <div class="modal-header border-0">
+        <h5 id="modalTitle" class="modal-title fw-bold text-dark"></h5>
         <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-4">
-        <img id="modalImage" class="img-fluid rounded mb-3" style="width: 100%; height: 200px; object-fit: cover;">
-        <h4 id="modalTitle" class="mb-2" style="color: #15363b; font-weight: bold;"></h4>
-        <p id="modalDesc" class="text-muted mb-0"></p>
+        <img id="modalImage" class="img-fluid rounded mb-3" style="width: 100%; height: 300px; object-fit: cover;">
+        <div id="modalDesc" class="text-muted" style="max-height: 400px; overflow-y: auto;"></div>
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@
         const image = this.getAttribute('data-image');
 
         document.getElementById('modalTitle').textContent = title;
-        document.getElementById('modalDesc').textContent = desc;
+        document.getElementById('modalDesc').innerHTML = desc;
         document.getElementById('modalImage').setAttribute('src', image);
 
         const modal = new bootstrap.Modal(document.getElementById('serviceModal'));

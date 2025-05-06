@@ -58,10 +58,10 @@
         </div>
     </div>
     <div class="container">
-        <div class="copyright text-white">Copyright © {{ date('Y') }} <strong>
+        <div class="copyright text-white pb-4">Copyright © {{ date('Y') }} <strong>
                 <span>Homespecsolution</span></strong>
                 Design & Developed By: <a href="https://mentosoftware.co.uk" target="_blank"></a><br>
-                <a href="https://mentosoftware.co.uk" target="_blank" class="text-white">Mento Software</a>
+                <a href="https://mentosoftware.co.uk" target="_blank" class="text-white fw-bold" style="text-decoration: none">Mento Software</a>
         </div>
     </div>
 </footer>
