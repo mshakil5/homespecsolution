@@ -77,7 +77,7 @@
 
         </div>
 
-        <button id="newBtn" type="button" class="btn btn-info">Add New</button>
+        {{-- <button id="newBtn" type="button" class="btn btn-info">Add New</button> --}}
         <hr>
 
         <div id="contentContainer">
