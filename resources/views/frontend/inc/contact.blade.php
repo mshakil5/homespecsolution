@@ -37,10 +37,15 @@
                                     placeholder="Message"></textarea>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="math_captcha" class="form-label">Human Verification: What is <span id="math-question"></span>?</label>
+                                <input type="text" class="form-control rounded-3" id="math_captcha" placeholder="Your answer" required>
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="submit"  id="fcontact" onClick="this.disabled=true; this.value='Sending….';"  value="Send Message" class="btn btn-danger mt-3">
-
+                              <input type="submit" id="submit" disabled onClick="this.disabled=true; this.value='Sending….';" value="Send Message" class="btn btn-danger mt-3">
                             </div>
                         </div>
                     </div>
@@ -49,3 +54,50 @@
         </div>
     </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Generate random math question
+      function generateMathQuestion() {
+          const num1 = Math.floor(Math.random() * 10) + 1;
+          const num2 = Math.floor(Math.random() * 10) + 1;
+          const operators = ['+', '-'];
+          const operator = operators[Math.floor(Math.random() * operators.length)];
+          
+          let question, answer;
+          if (operator === '+') {
+              question = `${num1} + ${num2}`;
+              answer = num1 + num2;
+          } else {
+              // Ensure we don't get negative answers
+              if (num1 >= num2) {
+                  question = `${num1} - ${num2}`;
+                  answer = num1 - num2;
+              } else {
+                  question = `${num2} - ${num1}`;
+                  answer = num2 - num1;
+              }
+          }
+          
+          return { question, answer };
+      }
+  
+      // Initialize math captcha
+      let currentAnswer;
+      function initCaptcha() {
+          const { question, answer } = generateMathQuestion();
+          document.getElementById('math-question').textContent = question;
+          currentAnswer = answer;
+      }
+      initCaptcha();
+  
+      // Validate captcha and enable/disable submit button
+      const mathInput = document.getElementById('math_captcha');
+      const submitBtn = document.getElementById('submit');
+      
+      mathInput.addEventListener('input', function() {
+          const userAnswer = parseInt(mathInput.value.trim());
+          submitBtn.disabled = userAnswer !== currentAnswer;
+      });
+  });
+</script>

@@ -90,6 +90,27 @@
                         </div>
                         {{-- logo  --}}
                       </div>
+                      <div class="form-group">
+                            <label for="exampleInputFile">Footer logo</label>
+                            <div style="display: flex;">
+                                <div>
+                                    <img class="footerPreview img img-circle" width="80" 
+                                        src="@if (!empty($company->footer_logo)){{asset('images/company/'.$company->footer_logo)}}@endif">
+                                </div>
+                                <div style="margin-left: 15px; flex-grow: 1">
+                                    <p>Choose a file</p>
+                                    <input id="footer_logo" type="file">
+                                    <input type="hidden" name="footer_logo" value="">
+                                    <br>
+                                    <div class="progress">
+                                        <div class="progress-bar footer-progress"
+                                            role="progressbar" aria-valuemin="0"
+                                            aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                           <label for="exampleInputFile">Fav icon</label>
                             {{-- fav logo  --}}
@@ -175,10 +196,12 @@
               // alert("btn work");
                 var company_logo = $('#company_logo').prop('files')[0];
                 var fav_icon = $('#fav_icon').prop('files')[0];
+                var fav_icon = $('#footer_logo').prop('files')[0];
                 var form_data = new FormData();
                 form_data.append("company_name", $("#company_name").val());
                 form_data.append('company_logo', company_logo);
                 form_data.append('fav_icon', fav_icon);
+                form_data.append('footer_logo', footer_logo);
                 form_data.append("address", $("#address").val());
                 form_data.append("phone1", $("#phone1").val());
                 form_data.append("phone2", $("#phone2").val());
@@ -231,10 +254,15 @@
                 if(typeof fav_icon === 'undefined'){
                   fav_icon = 'null';
                 }
+                var footer_logo = $('#footer_logo').prop('files')[0];
+                if(typeof footer_logo === 'undefined'){
+                    footer_logo = 'null';
+                }
                 var form_data = new FormData();
                 form_data.append("company_name", $("#company_name").val());
                 form_data.append('company_logo', company_logo);
                 form_data.append('fav_icon', fav_icon);
+                form_data.append('footer_logo', footer_logo);
                 form_data.append("address", $("#address").val());
                 form_data.append("phone1", $("#phone1").val());
                 form_data.append("phone2", $("#phone2").val());
@@ -330,6 +358,56 @@
 
 
         })
+    </script>
+
+    <script>
+      $(function () {
+          $.ajaxSetup({
+              headers: {'X-CSRF-Token': '{{csrf_token()}}'}
+          });
+
+          var id = $('input[name="id"]').val();
+
+          // Footer logo upload
+          $('#footer_logo').change(function () {
+              var photo = $(this)[0].files[0];
+              var formData = new FormData();
+              formData.append('footer_logo', id);
+              formData.append('photo', photo);
+
+              $.ajax({
+                  xhr: function () {
+                      var xhr = new window.XMLHttpRequest();
+                      xhr.upload.addEventListener("progress", function (evt) {
+                          if (evt.lengthComputable) {
+                              var percentComplete = evt.loaded / evt.total;
+                              percentComplete = parseInt(percentComplete * 100);
+                              console.log(percentComplete);
+                              $('.footer-progress').css('width', percentComplete + '%');
+                              if (percentComplete === 100) {
+                                  console.log('completed 100%')
+
+                                  var imageUrl = window.URL.createObjectURL(photo)
+                                  $('.footerPreview').attr('src', imageUrl);
+                                  setTimeout(function () {
+                                      $('.footer-progress').css('width', '0%');
+                                  }, 2000)
+                              }
+                          }
+                      }, false);
+                      return xhr;
+                  },
+
+                  type: 'POST',
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  success: function (res) {
+                      // if(!res.success){alert(res.error)}
+                  }
+              })
+          })
+      })
     </script>
     <script>
         $(function () {

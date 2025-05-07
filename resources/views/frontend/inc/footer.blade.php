@@ -4,12 +4,12 @@
             <div class="row">
 
               @php
-                  $company_logo = \App\Models\CompanyDetail::select('company_logo')->first();
+                  $footer_logo = \App\Models\CompanyDetail::select('footer_logo')->first();
               @endphp
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <a class="navbar-brand" href="{{ route('homepage')}}">
-                        <img src="{{asset('images/company/'.$company_logo->company_logo)}}" class="p-1 img-fluid mx-auto" width="220px">
+                        <img src="{{asset('images/company/'.$footer_logo->footer_logo)}}" class="p-1 img-fluid mx-auto" width="220px">
                     </a>
                     <div class="footer-contact" style="margin-left: 20px">
                         <div class="customer-support">

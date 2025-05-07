@@ -158,6 +158,11 @@
     line-height: 1.2;
   }
 
+  #math-question {
+      font-weight: bold;
+      color: #2c3e50;
+  }
+
 </style>
 
 <section class="banner">
@@ -321,8 +326,8 @@
         <div class="card shadow-lg border-0 rounded-4">
           <div class="card-body p-4">
             <h5 class="card-title fw-bold mb-4">Contact Form</h5>
-            <form action="#" method="POST" class="row g-3">
-
+            <form class="row g-3" id="contactForm" >
+              @csrf
               <div class="ermsg2"></div>
               <div id='loader' style='display:none;'>
                   <img src="{{ asset('images/loader/small-loader.gif') }}" height="50px" id="loading-image" alt="Loading..." />
@@ -330,19 +335,28 @@
                   <p style="margin-top: 10px">Sending your message ..... </p>
               </div>
               <div class="col-md-6">
-                <input type="text" name="first-name" class="form-control rounded-3" placeholder="First Name" required id="fname">
+                  <input type="text" name="fname" class="form-control rounded-3" placeholder="First Name" required id="fname">
               </div>
               <div class="col-md-6">
-                <input type="text" name="last-name" class="form-control rounded-3" placeholder="Last Name" required id="lname">
+                  <input type="text" name="lname" class="form-control rounded-3" placeholder="Last Name" id="lname">
+              </div>
+              <div class="col-6">
+                  <input type="email" name="email" class="form-control rounded-3" placeholder="Email Address" required id="email">
+              </div>
+              <div class="col-6">
+                  <input type="number" name="phone" class="form-control rounded-3" placeholder="Email Number" required id="phone">
               </div>
               <div class="col-12">
-                <input type="email" name="email" class="form-control rounded-3" placeholder="Email Address" required id="email">
+                  <textarea name="message" rows="5" class="form-control rounded-3" placeholder="Your Message" required id="message"></textarea>
               </div>
               <div class="col-12">
-                <textarea name="message" rows="5" class="form-control rounded-3" placeholder="Your Message" required id="message"></textarea>
+                  <div class="form-group mb-3">
+                      <label for="math_captcha" class="form-label">Human Verification: What is <span id="math-question"></span>?</label>
+                      <input type="text" class="form-control rounded-3" id="math_captcha" placeholder="Your answer" required>
+                  </div>
               </div>
               <div class="col-12">
-                <input type="submit" id="submit" onClick="this.disabled=true; this.value='Sending….';" value="Send Message" class="btn bg-theme  text-white mt-3">
+                  <input type="submit" id="submit" value="Send Message" class="btn bg-theme text-white mt-3" disabled>
               </div>
             </form>
           </div>
@@ -388,6 +402,53 @@
         </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Generate random math question
+      function generateMathQuestion() {
+          const num1 = Math.floor(Math.random() * 10) + 1;
+          const num2 = Math.floor(Math.random() * 10) + 1;
+          const operators = ['+', '-'];
+          const operator = operators[Math.floor(Math.random() * operators.length)];
+          
+          let question, answer;
+          if (operator === '+') {
+              question = `${num1} + ${num2}`;
+              answer = num1 + num2;
+          } else {
+              // Ensure we don't get negative answers
+              if (num1 >= num2) {
+                  question = `${num1} - ${num2}`;
+                  answer = num1 - num2;
+              } else {
+                  question = `${num2} - ${num1}`;
+                  answer = num2 - num1;
+              }
+          }
+          
+          return { question, answer };
+      }
+  
+      // Initialize math captcha
+      let currentAnswer;
+      function initCaptcha() {
+          const { question, answer } = generateMathQuestion();
+          document.getElementById('math-question').textContent = question;
+          currentAnswer = answer;
+      }
+      initCaptcha();
+  
+      // Validate captcha and enable/disable submit button
+      const mathInput = document.getElementById('math_captcha');
+      const submitBtn = document.getElementById('submit');
+      
+      mathInput.addEventListener('input', function() {
+          const userAnswer = parseInt(mathInput.value.trim());
+          submitBtn.disabled = userAnswer !== currentAnswer;
+      });
+  });
+</script>
 
 <script>
   function showVideoModal(videoUrl) {
@@ -479,6 +540,7 @@
     $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
     var url = "{{URL::to('/contact-submit')}}";
     $("#submit").click(function(){
+        $("#submit").prop('disabled', true);
         $("#loader").show();
             var fname= $("#fname").val();
             var lname= $("#lname").val();
@@ -508,6 +570,6 @@
             });
 
     });
-});
+  });
 </script>
 @endsection

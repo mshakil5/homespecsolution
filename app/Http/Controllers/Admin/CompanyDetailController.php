@@ -144,6 +144,19 @@ class CompanyDetailController extends Controller
             $company->fav_icon= $companyiconName;
         }
 
+        if($request->footer_logo != 'null'){
+          $footerlogo_path = public_path('images/company').'/'.$company->footer_logo;
+          // unlink($footerlogo_path);
+          $company->company_name = $request->company_name;
+          $request->validate([
+              'footer_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          ]);
+          $footerlogo_rand = mt_rand(100000, 999999);
+          $footerlogoName = time(). $footerlogo_rand .'.'.$request->footer_logo->extension();
+          $request->footer_logo->move(public_path('images/company'), $footerlogoName);
+          $company->footer_logo = $footerlogoName;
+      }
+
         $company->company_name= $request->company_name;
         $company->address= $request->address;
         $company->phone1= $request->phone1;
