@@ -13,6 +13,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\VideoBlogCategoryController;
 use App\Http\Controllers\Admin\VideoBlogController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\SectionController;
 
 //admin part start
 Route::group(['prefix' =>'admin/', 'middleware' => ['auth', 'is_admin']], function(){
@@ -119,6 +120,9 @@ Route::group(['prefix' =>'admin/', 'middleware' => ['auth', 'is_admin']], functi
     Route::post('/services-update', [ServiceController::class, 'update']);
     Route::get('/services/{id}', [ServiceController::class, 'delete']);
     Route::post('/services/{id}/status', [ServiceController::class, 'updateStatus'])->name('services.updateStatus');
+
+    Route::get('/section-status', [SectionController::class, 'sectionStatus'])->name('sectionstatus');
+    Route::post('/section-status/update', [SectionController::class, 'updateSectionStatus'])->name('updateSectionStatus');
     
 
 });

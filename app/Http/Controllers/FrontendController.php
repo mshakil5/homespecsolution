@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use App\Models\BlogCategory;
+use App\Models\SectionStatus;
 
 class FrontendController extends Controller
 {
@@ -20,7 +21,9 @@ class FrontendController extends Controller
         }])
         ->latest()
         ->get();
-        return view('frontend.index', compact('videoBlogCategories'));
+
+        $section_status = SectionStatus::first();
+        return view('frontend.index', compact('videoBlogCategories', 'section_status'));
     }
 
     public function contact()

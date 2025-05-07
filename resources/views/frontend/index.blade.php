@@ -165,6 +165,8 @@
 
 </style>
 
+@if($section_status->slider == 1)
+
 <section class="banner">
     <img src="{{asset('frontend/frontend/slider/asd1.png')}}" class="bannerPhoto">
     <div class="container h-100">
@@ -185,6 +187,8 @@
     </div>
 </section>
 
+@endif
+
 <section class="linkUp bg-secondary p-3 d-none">
     <div class="container">
         <div class="row text-center">
@@ -197,6 +201,8 @@
         </div>
     </div>
 </section>
+
+@if($section_status->about == 1)
 
 <section class="py-5 steps" style="background-color: #eef4f7;">
   <div class="container px-4" id="featured-3">
@@ -218,9 +224,21 @@
   </div>
 </section>
 
+@endif
+
+@if($section_status->projects == 1)
+
 @include('frontend.inc.projects')
 
+@endif
+
+@if($section_status->services == 1)
+
 @include('frontend.inc.services')
+
+@endif
+
+@if($section_status->why_choose_us == 1)
 
 <section class="border-top pt-3 projects">
   <div class="container px-4 mt-3">
@@ -263,6 +281,10 @@
   </div>
 </section>
 
+@endif
+
+@if($section_status->video_blog == 1)
+
 @if($videoBlogCategories->count() > 0)
 <section class="border-top pt-3 projects" style="background-color:rgba(224, 253, 255, 0.2);">
   <div class="container px-4 mt-3">
@@ -300,6 +322,10 @@
   </div>
 </section>
 @endif
+
+@endif
+
+@if($section_status->get_in_touch == 1)
 
 <section class="projects py-5 border-top">
   <div class="container">
@@ -367,6 +393,7 @@
   </div>
 </section>
 
+@endif
 
 <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
