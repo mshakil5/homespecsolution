@@ -370,7 +370,7 @@
                   <input type="email" name="email" class="form-control rounded-3" placeholder="Email Address" required id="email">
               </div>
               <div class="col-6">
-                  <input type="number" name="phone" class="form-control rounded-3" placeholder="Email Number" required id="phone">
+                  <input type="number" name="phone" class="form-control rounded-3" placeholder="Phone" required id="phone">
               </div>
               <div class="col-12">
                   <textarea name="message" rows="5" class="form-control rounded-3" placeholder="Your Message" required id="message"></textarea>

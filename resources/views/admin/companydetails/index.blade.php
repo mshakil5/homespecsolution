@@ -138,8 +138,8 @@
 
                         <div class="form-group">
                           <label for="footer_link">Footer Text</label>
-                          <input type="text" id="footer_link" value="@if (!empty($company->footer_link)){{$company->footer_link}}@endif" name="footer_link" class="form-control">
-                      </div>
+                          <textarea id="footer_link" name="footer_link" class="form-control" rows="5">@if (!empty($company->footer_link)){{ $company->footer_link }}@endif</textarea>
+                        </div>                        
                       <div class="form-group">
                         <label for="google_play_link">Opening Hours</label>
                         <input type="text" id="google_play_link" value="@if (!empty($company->google_play_link)){{$company->google_play_link}}@endif" name="google_play_link" class="form-control">
