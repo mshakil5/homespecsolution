@@ -19,6 +19,7 @@ public/images/plan
 public/images/company
 public/images/loader
 public/images
+public/frontend/slider
 
 # Laravel 5 & Lumen specific with changed public path
 public_html/storage

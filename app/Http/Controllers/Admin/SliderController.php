@@ -6,6 +6,7 @@ use App\Models\Slider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\support\Facades\Auth;
+use Image;
 
 class SliderController extends Controller
 {
@@ -96,27 +97,41 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $post = Slider::find($id);
+
         if ($request->image != 'null') {
             $request->validate([
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             ]);
+
+            // Delete old image
+            $oldImagePath = public_path('frontend/slider/' . $post->photo);
+            if (file_exists($oldImagePath) && is_file($oldImagePath)) {
+                unlink($oldImagePath);
+            }
+
+            // Resize and save new image using Intervention
             $rand = mt_rand(100000, 999999);
-            $imageName = time(). $rand .'.'.$request->image->extension();
-            $request->image->move(public_path('frontend/slider'), $imageName);
-            $post->photo= $imageName;
+            $imageName = time() . $rand . '.' . $request->image->extension();
+            $imagePath = public_path('frontend/slider/' . $imageName);
+
+            $image = Image::make($request->image)
+                ->fit(1920, 1080)
+                ->save($imagePath);
+
+            $post->photo = $imageName;
         }
+
         $post->title = $request->title;
         $post->caption = $request->caption;
         $post->updated_by = Auth::user()->id;
+
         if ($post->save()) {
-            $message ="<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Slider Updated Successfully.</b></div>";
-            return response()->json(['status'=> 300,'message'=>$message]);
-        }
-        else{
-            return response()->json(['status'=> 303,'message'=>'Server Error!!']);
+            $message = "<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Slider Updated Successfully.</b></div>";
+            return response()->json(['status' => 300, 'message' => $message]);
+        } else {
+            return response()->json(['status' => 303, 'message' => 'Server Error!!']);
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *

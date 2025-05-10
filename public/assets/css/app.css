@@ -317,7 +317,7 @@ body {
   }
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
 
   .banner {
     height: 245px;
@@ -346,9 +346,9 @@ body {
     justify-content: center;
   }
 
-}
+} */
 
-/* @media (max-width: 600px) {
+@media (max-width: 600px) {
   .banner .bannerPhoto {
     left: -153%;
   }
@@ -358,7 +358,7 @@ body {
   .banner .bannerPhoto {
     left: -178%;
   }
-} */
+}
 
 .banner .quote {
   position: absolute;
@@ -378,6 +378,12 @@ body {
 .banner .quote:hover {
   background-color: #003C4E !important;
   color: #fff;
+}
+
+@media (max-width: 600px) {
+  .quote {
+    padding-bottom: 60px;
+  }
 }
 
 .btn:hover {
@@ -732,10 +738,10 @@ body {
 }
 
 #footer .footer-top .footer-info p {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  text-align: justify;
+  /* text-align: justify; */
 
   /* font-family: "Raleway", sans-serif; */
 }
