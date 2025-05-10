@@ -318,6 +318,24 @@ body {
 }
 
 @media (max-width: 600px) {
+
+  .banner {
+    height: 245px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .banner .bannerPhoto {
+    position: static;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    left: auto;
+  }
+}
+
+/* @media (max-width: 600px) {
   .banner .bannerPhoto {
     left: -153%;
   }
@@ -327,7 +345,7 @@ body {
   .banner .bannerPhoto {
     left: -178%;
   }
-}
+} */
 
 .banner .quote {
   position: absolute;
