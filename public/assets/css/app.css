@@ -714,7 +714,9 @@ body {
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: "Raleway", sans-serif;
+  text-align: justify;
+
+  /* font-family: "Raleway", sans-serif; */
 }
 
 #footer .footer-top .social-links a {

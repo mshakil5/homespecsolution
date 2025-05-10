@@ -140,7 +140,7 @@
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 0;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
   }
 
   .home-about .sectitle{
@@ -168,20 +168,18 @@
 @if($section_status->slider == 1)
 
 <section class="banner">
-    <img src="{{asset('frontend/frontend/slider/asd1.png')}}" class="bannerPhoto">
+    <img src="{{ asset('frontend/slider/' . (\App\Models\Slider::first()->photo ?? 'default.png')) }}" class="bannerPhoto">
     <div class="container h-100">
         <div class="row p-0 h-100 m-0">
             <div class="col-md-6 p-0 leftBlock"></div>
-            <div class="col-md-6 p-0 position-relative  d-flex align-items-center justify-content-center">
-                <div class="w-100 p-4 slideText ">
+            <div class="col-md-6 p-0 position-relative d-flex align-items-center justify-content-center">
+                <div class="w-100 p-4 slideText">
                     <h1 class="text-white sinking-bold display-5">{{\App\Models\Slider::first()->title ?? ''}}</h1>
-                    <p class=" text-white sinking-light para">{{\App\Models\Slider::first()->caption ?? ''}}</p>
-                    </p>
+                    <p class="text-white sinking-light para">{{\App\Models\Slider::first()->caption ?? ''}}</p>
                 </div>
             </div>
         </div>
         <a href="{{ route('getquote')}}" class="quote">
-            <img src="{{asset('assets/images/arrow.png')}}" class="arrowDown">
             Get a quote
         </a>
     </div>

@@ -47,7 +47,7 @@
       </div>
       <div class="modal-body p-4">
         <img id="modalImage" class="img-fluid rounded mb-3" style="width: 100%; height: 300px; object-fit: cover;">
-        <div id="modalDesc" class="text-muted" style="max-height: 400px; overflow-y: auto;"></div>
+        <div id="modalDesc" style="max-height: 400px; overflow-y: auto;"></div>
       </div>
     </div>
   </div>

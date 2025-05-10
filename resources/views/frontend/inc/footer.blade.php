@@ -99,7 +99,7 @@
   line-height: 27px;
   font-weight: 600;
   color: #666;
-  font-family: Raleway, sans-serif
+  /* font-family: Raleway, sans-serif */
 }
 
 @media (min-width:1200px) {
