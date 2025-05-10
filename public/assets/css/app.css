@@ -333,6 +333,19 @@ body {
     margin: 0 auto;
     left: auto;
   }
+
+  .slideText h1 {
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .slideText .para {
+    font-size: 14px;
+    text-align: center;
+    justify-content: center;
+  }
+
 }
 
 /* @media (max-width: 600px) {
@@ -423,16 +436,6 @@ body {
 
 .steps {
   background-color: #f9f9f9;
-}
-
-@media (max-width: 600px) {
-  .slideText h1 {
-    text-align: center;
-  }
-  .slideText .para {
-    text-align: center;
-    font-size: 15px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -729,7 +732,7 @@ body {
 }
 
 #footer .footer-top .footer-info p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
   margin-bottom: 0;
   text-align: justify;
