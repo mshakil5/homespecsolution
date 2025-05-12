@@ -143,6 +143,12 @@
     /* font-family: sans-serif; */
   }
 
+  @media (max-width: 768px) {
+    .home-about .sectitle{
+    font-size: 18px !important;
+    }
+  }
+
   .home-about .sectitle{
     color: #15363b;
     font-size: 30px;
@@ -293,9 +299,9 @@
         <div class="home-about p-4">
           <h2 class="sectitle text-uppercase sinking-bold fw-bold mb-3">
             {{\App\Models\Master::where('softcode','=','homeAbout')->first()->hardcode ?? ''}}</h2>
-          <p style="text-align: justify;">
-            {!! \App\Models\Master::where('softcode','=','homeAbout')->first()->details ?? ''!!}
-          </p>
+            <p class="text-justify">
+            {!! \App\Models\Master::where('softcode','=','homeAbout')->first()->details ?? '' !!}
+            </p>
         </div>
       </div>
     </div>
