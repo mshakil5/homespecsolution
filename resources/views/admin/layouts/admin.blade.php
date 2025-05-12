@@ -5,7 +5,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Home Spaces Solution</title>
+    <title>Home Spac Solution</title>
     <!-- Twitter meta-->
     <meta property="twitter:card" content="hasibuzzaman">
     <meta property="twitter:site" content="@hasibuzzaman">
@@ -44,7 +44,7 @@
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="{{ route('homepage')}}">Home Spaces Solution</a>
+    <header class="app-header"><a class="app-header__logo" href="{{ route('homepage')}}">HomeSpacSolution</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">

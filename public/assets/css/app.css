@@ -302,63 +302,34 @@ body {
   position: relative;
 }
 
-.banner .bannerPhoto {
+/* .banner .bannerPhoto {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   pointer-events: none;
-}
+} */
 
 @media (max-width: 768px) {
   .banner .bannerPhoto {
     left: -99%;
   }
-}
-
-/* @media (max-width: 600px) {
 
   .banner {
-    height: 245px;
-    position: relative;
-    overflow: hidden;
+    height: 30vh !important;
   }
+}
 
-  .banner .bannerPhoto {
-    position: static;
-    height: 250px;
+.bannerPhoto {
+    width: 100%;
+    height: auto;
     object-fit: cover;
     display: block;
-    margin: 0 auto;
-    left: auto;
-  }
-
-  .slideText h1 {
-    font-size: 20px;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .slideText .para {
-    font-size: 14px;
-    text-align: center;
-    justify-content: center;
-  }
-
-} */
-
-@media (max-width: 600px) {
-  .banner .bannerPhoto {
-    left: -153%;
-  }
 }
 
-@media (max-width: 600px) {
-  .banner .bannerPhoto {
-    left: -178%;
-  }
-}
+
+
 
 .banner .quote {
   position: absolute;

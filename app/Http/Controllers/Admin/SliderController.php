@@ -104,10 +104,10 @@ class SliderController extends Controller
             ]);
 
             // Delete old image
-            $oldImagePath = public_path('frontend/slider/' . $post->photo);
-            if (file_exists($oldImagePath) && is_file($oldImagePath)) {
-                unlink($oldImagePath);
-            }
+            // $oldImagePath = public_path('frontend/slider/' . $post->photo);
+            // if (file_exists($oldImagePath) && is_file($oldImagePath)) {
+            //     unlink($oldImagePath);
+            // }
 
             // Resize and save new image using Intervention
             $rand = mt_rand(100000, 999999);

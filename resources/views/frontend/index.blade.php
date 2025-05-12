@@ -185,9 +185,9 @@
     </div>
 </section> --}}
 
-<section class="banner p-3">
+<section class="banner">
     <img src="{{ asset('frontend/slider/' . (\App\Models\Slider::first()->photo ?? 'default.png')) }}" class="bannerPhoto">
-    <div class="container h-100">
+    <div class="container h-100 d-none d-md-flex">
         <div class="row p-0 h-100 m-0">
             <div class="col-md-6 p-0 leftBlock"></div>
             <div class="col-md-6 p-0 position-relative  d-flex align-items-center justify-content-center">
