@@ -315,6 +315,7 @@ body {
 
   .banner {
     height: 30vh !important;
+    min-height: 30vh !important;
   }
 }
 
