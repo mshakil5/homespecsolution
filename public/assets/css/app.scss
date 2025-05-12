@@ -288,54 +288,7 @@
      pointer-events: none;
  }
 
- .banner {
-     height: 90vh;
-     overflow: hidden;
-     position: relative;
 
-     .bannerPhoto {
-         position: absolute;
-         left: 0;
-         right: 0;
-         top: 0;
-         bottom: 0;
-         pointer-events: none;
-
-         @media(max-width:768px) {
-             left: -99%;
-         }
-
-         @media(max-width:600px) {
-             left: -153%;
-         }
-
-         @media(max-width:600px) {
-             left: -178%;
-         }
-     }
-
-
-     .quote {
-         position: absolute;
-         bottom: 22px;
-         font-size: 18px;
-         color: #fff;
-         font-family: 'Sinkin Sans-black';
-         border: 1px solid #fff;
-         padding: 8px 23px;
-         border-radius: 22px;
-         text-transform: uppercase;
-         font-weight: bold;
-         text-decoration: none;
-         right: 22px;
-
-
-         &:hover {
-             background-color: #e96b56 !important;
-             color: #fff;
-         }
-     }
- }
 
 
  .dropdown-item {
