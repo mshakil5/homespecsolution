@@ -296,11 +296,8 @@ body {
   pointer-events: none;
 }
 
-.banner {
-  height: 90vh;
-  overflow: hidden;
-  position: relative;
-}
+
+
 
 /* .banner .bannerPhoto {
   position: absolute;
@@ -313,7 +310,7 @@ body {
 
 @media (max-width: 768px) {
   .banner .bannerPhoto {
-    left: -99%;
+    left: 0%;
   }
 
   .banner {
@@ -321,11 +318,25 @@ body {
   }
 }
 
+.banner {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .bannerPhoto {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
 
 
