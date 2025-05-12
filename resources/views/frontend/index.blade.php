@@ -225,7 +225,7 @@
   <div class="container px-4" id="featured-3">
     <div class="row align-items-center">
       <div class="col-md-6 mb-4 mb-md-0">
-        <img src="{{ asset('frontend/frontend/slider/profile.png') }}" alt="Home Improvement"
+        <img src="{{ asset('frontend/about/1.jpg') }}" alt="Home Improvement"
         class="img-fluid rounded" style="height: 300px; width: 100%; object-fit: cover;">
       </div>
       <div class="col-md-6">
