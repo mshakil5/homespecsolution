@@ -13,6 +13,7 @@
     <link rel="icon" href="{{ asset('assets/images/favi.png') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
     @yield('css')
 </head>
 

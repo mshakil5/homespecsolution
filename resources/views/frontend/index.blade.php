@@ -198,7 +198,7 @@
     bottom: 22px;
     font-size: 18px;
     color: #fff;
-    font-family: 'Sinkin Sans-black';
+    font-family: 'Raleway';
     border: 1px solid #fff;
     padding: 8px 23px;
     border-radius: 22px;

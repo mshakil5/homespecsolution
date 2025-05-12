@@ -14,11 +14,11 @@
 }
 
 .sinking-bold {
-  font-family: 'Sinkin Sans-black';
+  font-family: 'Raleway';
 }
 
 .sinking {
-  font-family: 'Sinkin San';
+  font-family: 'Raleway';
 }
 
 .text-theme {
@@ -57,11 +57,11 @@
 }
 
 .sinking-light {
-  font-family: 'Sinkin Sans-light-300';
+  font-family: 'Raleway';
 }
 
 body {
-  font-family: 'Sinkin San';
+  font-family: 'Raleway';
 }
 
 @media (max-width: 600px) {
@@ -93,7 +93,7 @@ body {
 
 .linkUp .links a {
   color: #fff;
-  font-family: 'Sinkin Sans-light-300';
+  font-family: 'Raleway';
   text-decoration: none;
   margin: 0 20px;
   text-align: center;
@@ -184,11 +184,11 @@ body {
 }
 
 .breadcrumb .inner h2 {
-  font-family: 'Sinkin Sans-black';
+  font-family: 'Raleway';
 }
 
 .breadcrumb .inner small {
-  font-family: 'Sinkin Sans-light-300';
+  font-family: 'Raleway';
 }
 
 .breadcrumb .inner a {
@@ -204,7 +204,7 @@ body {
 .siteHeader .nav-item .nav-link {
   text-transform: capitalize;
   font-weight: bold;
-  font-family: 'Sinkin Sans-light-300';
+  font-family: 'Raleway';
   font-size: 16px;
   color: #15363b;
   padding: 10px 15px;
@@ -261,7 +261,7 @@ body {
 }
 
 .navCustom .nav-item .nav-link {
-  font-family: 'Sinkin San';
+  font-family: 'Raleway';
   padding: 0 13px;
   color: #15363b;
   font-weight: bold;
