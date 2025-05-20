@@ -15,6 +15,20 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
     @yield('css')
+
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17094714775"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-17094714775');
+    </script>
+
+
 </head>
 
 <body>
