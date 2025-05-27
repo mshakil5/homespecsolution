@@ -89,7 +89,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="submit" id="getquote" onClick="this.disabled=true; this.value='Sending….';" value="Send Message" class="btn bg-theme  text-white mt-3" disabled>
+                                <input type="submit" id="submit" value="Send Message" class="btn bg-theme text-white mt-3" disabled>
                             </div>
                         </div>
                     </div>
@@ -166,11 +166,11 @@
   
       // Validate captcha and enable/disable submit button
       const mathInput = document.getElementById('math_captcha');
-      const submitBtn = document.getElementById('getquote');
+      const submitBtn = document.getElementById('submit');
       
       mathInput.addEventListener('input', function() {
-          const userAnswer = Number(mathInput.value.trim());
-          submitBtn.disabled = isNaN(userAnswer) || userAnswer !== currentAnswer;
+          const userAnswer = parseInt(mathInput.value.trim());
+          submitBtn.disabled = userAnswer !== currentAnswer;
       });
   });
 </script>
@@ -191,7 +191,7 @@
 
                 //  make mail start
                 var url = "{{URL::to('/contact-getquote')}}";
-                $("#getquote").click(function(){
+                $("#submit").click(function(){
 
                     $("#loader").show();
 
@@ -226,8 +226,8 @@
                             success: function (d) {
                                 if (d.status == 303) {
                                     $(".ermsg").html(d.message);
-                                    $("#getquote").prop('disabled', false);
-                                    $("#getquote").val('Send Message');
+                                    $("#submit").prop('disabled', false);
+                                    $("#submit").val('Send Message');
                                 }else if(d.status == 300){
                                     $(".ermsg").html(d.message);
                                     window.setTimeout(function(){location.reload()},2000)
