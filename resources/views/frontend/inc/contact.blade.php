@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                              <input type="submit" id="submit" disabled onClick="this.disabled=true; this.value='Sending….';" value="Send Message" class="btn btn-danger mt-3">
+                              <input type="submit" id="fcontact" disabled onClick="this.disabled=true; this.value='Sending….';" value="Send Message" class="btn btn-danger mt-3">
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
   
       // Validate captcha and enable/disable submit button
       const mathInput = document.getElementById('math_captcha');
-      const submitBtn = document.getElementById('submit');
+      const submitBtn = document.getElementById('fcontact');
       
       mathInput.addEventListener('input', function() {
           const userAnswer = parseInt(mathInput.value.trim());

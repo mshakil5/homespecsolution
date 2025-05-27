@@ -31,7 +31,7 @@
 </footer>
 
 
-@include('frontend.inc.contact')
+{{-- @include('frontend.inc.contact') --}}
 @endsection
 
 @section('script')

@@ -120,7 +120,7 @@ class ContactController extends Controller
 
         if(empty($name)){
             $message ="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-            Please fill first name field, thank you!
+            Please fill name field, thank you!
             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
             return response()->json(['status'=> 303,'message'=>$message]);
             exit();
