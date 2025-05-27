@@ -175,9 +175,6 @@
   });
 </script>
 
-
-@include('frontend.inc.contact')
-
 @endsection
 
 @section('script')
